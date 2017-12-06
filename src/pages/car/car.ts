@@ -5,7 +5,8 @@ import { CarDetailPage } from '../car-detail/car-detail';
 import { Storage } from '@ionic/storage';
 import { HttpClient } from '@angular/common/http';
 import { ServerProvider } from '../../providers/server/server';
-import {Observable} from 'rxjs/Observable';
+import { Observable } from 'rxjs/Rx';
+// import 'rxjs/Rx';
 
 @Component({
   selector: 'page-car',

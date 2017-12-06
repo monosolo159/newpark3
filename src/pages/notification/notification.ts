@@ -7,6 +7,7 @@ import { HttpClient } from '@angular/common/http';
 import { ServerProvider } from '../../providers/server/server';
 import { Storage } from '@ionic/storage';
 import { Observable } from 'rxjs/Rx';
+// import 'rxjs/Rx';
 // import { MomentModule } from 'angular2-moment';
 // import { OneSignal } from '@ionic-native/onesignal';
 

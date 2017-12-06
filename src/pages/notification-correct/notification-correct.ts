@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams, AlertController} from 'ionic-angular';
-import { Server } from '../../providers/server';
-import { Http } from '@angular/http';
+import { HttpClient } from '@angular/common/http';
+import { ServerProvider } from '../../providers/server/server';
 import { Storage } from '@ionic/storage';
 
 @Component({
@@ -21,7 +21,7 @@ export class NotificationCorrectPage {
   public user_id_send;
   // public notification_date_correct_check;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public server: Server, public http: Http, public storage: Storage, public alertCtrl: AlertController) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public server: ServerProvider, public http: HttpClient, public storage: Storage, public alertCtrl: AlertController) {
     // this.notification_date_correct = new Date().toISOString();
   }
 

@@ -1,14 +1,13 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams, ModalController, LoadingController, AlertController } from 'ionic-angular';
 import { LoginPage } from '../login/login';
-import { Http } from '@angular/http';
-import { Server } from '../../providers/server';
+import { HttpClient } from '@angular/common/http';
+import { ServerProvider } from '../../providers/server/server';
 import { Md5 } from 'ts-md5/dist/md5';
 
 @Component({
   selector: 'page-register',
-  templateUrl: 'register.html',
-  providers: [Server]
+  templateUrl: 'register.html'
 })
 export class RegisterPage {
   public data_table: Array<{}>;
@@ -17,7 +16,7 @@ export class RegisterPage {
   public user_password;
   public user_phone;
   public user_sex;
-  constructor(public navCtrl: NavController, public navParams: NavParams, public modalCtrl: ModalController, public loadingCtrl: LoadingController, public http: Http, public alertCtrl: AlertController, public server: Server) { }
+  constructor(public navCtrl: NavController, public navParams: NavParams, public modalCtrl: ModalController, public loadingCtrl: LoadingController, public http: HttpClient, public alertCtrl: AlertController, public server: ServerProvider) { }
 
   ionViewWillEnter() {
     this.user_sex = -1;

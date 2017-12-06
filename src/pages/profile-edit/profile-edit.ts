@@ -1,14 +1,13 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams, ModalController, LoadingController, AlertController } from 'ionic-angular';
-import { Http } from '@angular/http';
 import { Storage } from '@ionic/storage';
-import { Server } from '../../providers/server';
+import { HttpClient } from '@angular/common/http';
+import { ServerProvider } from '../../providers/server/server';
 import { Md5 } from 'ts-md5/dist/md5';
 
 @Component({
   selector: 'page-profile-edit',
-  templateUrl: 'profile-edit.html',
-  providers: [Server]
+  templateUrl: 'profile-edit.html'
 })
 export class ProfileEditPage {
   public data_table: Array<{}>;
@@ -22,7 +21,7 @@ export class ProfileEditPage {
   public user_photo;
   public user_sex;
   public user_active;
-  constructor(public navCtrl: NavController, public navParams: NavParams, public modalCtrl: ModalController, public loadingCtrl: LoadingController, public http: Http, public alertCtrl: AlertController, public storage: Storage, public server: Server) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public modalCtrl: ModalController, public loadingCtrl: LoadingController, public http: HttpClient, public alertCtrl: AlertController, public storage: Storage, public server: ServerProvider) {
     storage.get('user_data').then((val) => {
       this.user_id = val['user_id'];
       this.user_username = val['user_username'];

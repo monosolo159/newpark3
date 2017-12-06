@@ -3,7 +3,7 @@ import { NavController, ModalController, AlertController, LoadingController } fr
 import { Storage } from '@ionic/storage';
 import { HttpClient } from '@angular/common/http';
 import { ServerProvider } from '../../providers/server/server';
-// import { Geolocation } from '@ionic-native/geolocation';
+import { Geolocation } from '@ionic-native/geolocation';
 import 'rxjs/add/operator/map';
 
 declare var google;

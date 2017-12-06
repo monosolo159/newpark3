@@ -1,13 +1,12 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams, ModalController, LoadingController, AlertController } from 'ionic-angular';
-import { Http } from '@angular/http';
 import { Storage } from '@ionic/storage';
-import { Server } from '../../providers/server';
+import { HttpClient } from '@angular/common/http';
+import { ServerProvider } from '../../providers/server/server';
 
 @Component({
   selector: 'page-profile-setting',
-  templateUrl: 'profile-setting.html',
-  providers: [Server]
+  templateUrl: 'profile-setting.html'
 })
 export class ProfileSettingPage {
 
@@ -25,7 +24,7 @@ export class ProfileSettingPage {
 
   public user_phone_open;
   public telPhone;
-  constructor(public navCtrl: NavController, public navParams: NavParams, public modalCtrl: ModalController, public loadingCtrl: LoadingController, public http: Http, public alertCtrl: AlertController, public storage: Storage, public server: Server) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public modalCtrl: ModalController, public loadingCtrl: LoadingController, public http: HttpClient, public alertCtrl: AlertController, public storage: Storage, public server: ServerProvider) {
 
     this.user_id = this.navParams.get('user_id');
     this.reload_user();

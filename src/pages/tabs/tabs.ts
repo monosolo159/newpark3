@@ -16,7 +16,8 @@ import { Storage } from '@ionic/storage';
 import { ServerProvider } from '../../providers/server/server';
 import { HttpClient } from '@angular/common/http';
 
-import {Observable} from 'rxjs/Observable';
+import { Observable } from 'rxjs/Rx';
+// import 'rxjs/Rx';
 
 @Component({
   templateUrl: 'tabs.html'

@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams, AlertController} from 'ionic-angular';
-import { Server } from '../../providers/server';
-import { Http } from '@angular/http';
+import { HttpClient } from '@angular/common/http';
+import { ServerProvider } from '../../providers/server/server';
 import { Storage } from '@ionic/storage';
 
 @Component({
@@ -28,7 +28,7 @@ export class NotificationAddPage {
 
   public linkPicNoti = this.server.linkServerPicNotification();
   public linkPic = this.server.linkServerPic();
-  constructor(public navCtrl: NavController, public navParams: NavParams, public server: Server, public http: Http, public storage: Storage, public alertCtrl: AlertController) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public server: ServerProvider, public http: HttpClient, public storage: Storage, public alertCtrl: AlertController) {
 
   }
 

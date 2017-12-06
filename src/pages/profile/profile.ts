@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { App, NavController, ActionSheetController, ToastController, Platform, AlertController, LoadingController, Loading } from 'ionic-angular';
 import { Storage } from '@ionic/storage';
-import { Server } from '../../providers/server';
 import { LoginPage } from '../login/login';
 import { ProfileEditPage } from '../profile-edit/profile-edit';
 import { ProfileSettingPage } from '../profile-setting/profile-setting';
@@ -11,15 +10,15 @@ import { File } from '@ionic-native/file';
 import { FileTransfer,FileTransferObject } from '@ionic-native/file-transfer';
 // import { FileTransfer, FileUploadOptions, FileTransferObject } from '@ionic-native/file-transfer';
 import { Crop } from '@ionic-native/crop';
-import { HTTP } from '@ionic-native/http';
+import { HttpClient } from '@angular/common/http';
+import { ServerProvider } from '../../providers/server/server';
 
 declare var cordova: any;
 
 
 @Component({
   selector: 'page-profile',
-  templateUrl: 'profile.html',
-  providers: [Server]
+  templateUrl: 'profile.html'
 })
 export class ProfilePage {
 
@@ -40,7 +39,7 @@ export class ProfilePage {
   public user_phone_open;
   public user_photo = '';
   public isToggled: boolean;
-  constructor(public navCtrl: NavController, public actionSheetCtrl: ActionSheetController, public alertCtrl: AlertController, public platform: Platform, public loadingCtrl: LoadingController, public toastCtrl: ToastController, public server: Server, public storage: Storage, public http: HTTP, public app: App,public transfer: FileTransfer, public file: File,public crop: Crop,public camera: Camera) { }
+  constructor(public navCtrl: NavController, public actionSheetCtrl: ActionSheetController, public alertCtrl: AlertController, public platform: Platform, public loadingCtrl: LoadingController, public toastCtrl: ToastController, public server: ServerProvider, public storage: Storage, public http: HttpClient, public app: App,public transfer: FileTransfer, public file: File,public crop: Crop,public camera: Camera) { }
 
   ionViewWillEnter() {
     this.setDataUser();
@@ -67,28 +66,13 @@ export class ProfilePage {
   updateUser(item) {
     var link = this.server.linkServer() + "user_service/updateUser";
     var send_data = { 'user_id': this.user_id, 'user_phone_open': item };
-    // console.log(item + ' user');
+    console.log(item + ' user');
     // ส่งข้อมูลเพื่ออัพเดทไปที่เว็บเซอวิส
-    // this.http.post(link, send_data)
-    //   .subscribe(response => {
-    //     this.reload_user();
-    //   }, error => { });
-
-      this.http.post(link, send_data, {})
-      .then(data => {
+    this.http.post(link, send_data)
+      .subscribe(response => {
         this.reload_user();
-        console.log(data.status);
-        console.log(data.data); // data received by server
-        console.log(data.headers);
+      }, error => { });
 
-      })
-      .catch(error => {
-
-        console.log(error.status);
-        console.log(error.error); // error message as string
-        console.log(error.headers);
-
-      });
   }
 
   setDataUser() {
@@ -160,23 +144,8 @@ export class ProfilePage {
               };
               var link = this.server.linkServer() + "user_service/updateUser";
 
-              // this.http.post(link, send_data).subscribe(response => { }, error => { });
+              this.http.post(link, send_data).subscribe(response => { }, error => { });
 
-              this.http.post(link, send_data, {})
-              .then(data => {
-
-                console.log(data.status);
-                console.log(data.data); // data received by server
-                console.log(data.headers);
-
-              })
-              .catch(error => {
-
-                console.log(error.status);
-                console.log(error.error); // error message as string
-                console.log(error.headers);
-
-              });
 
 
               let navCtrl = this.app.getRootNav();
@@ -351,33 +320,15 @@ export class ProfilePage {
     };
     var link = this.server.linkServer() + "user_service/userUpdatePhoto";
 
-    // this.http.post(link, send_data)
-    //   .subscribe(response => {
-    //     this.user_photo = this.lastImage;
-    //     loading_popup.dismiss();
-    //     this.reload_user();
-    //     this.navCtrl.pop();
-    //   }, error => {
-    //   });
-
-      this.http.post(link, send_data, {})
-      .then(data => {
+    this.http.post(link, send_data)
+      .subscribe(response => {
         this.user_photo = this.lastImage;
         loading_popup.dismiss();
         this.reload_user();
         this.navCtrl.pop();
-        console.log(data.status);
-        console.log(data.data); // data received by server
-        console.log(data.headers);
-
-      })
-      .catch(error => {
-
-        console.log(error.status);
-        console.log(error.error); // error message as string
-        console.log(error.headers);
-
+      }, error => {
       });
+
   }
 
   public userPhoto() {
@@ -394,39 +345,10 @@ export class ProfilePage {
     var link = this.server.linkServer() + "user_service/selectUser/format/json";
 
     //ส่งข้อมูลไปที่เว็บเวอวิส เพื่อตรวจสอบข้อมูล
-    // this.http.post(link, send_data)
-    //   .subscribe(response => {
-    //     //รับข้อมูลใส่ไว้ในตัวแปร
-    //     this.data_table = JSON.parse(response["_body"]);
-    //
-    //     //เช็คว่ามีข้อมูลหรือไม่
-    //     if (this.data_table.length > 0) {
-    //
-    //       var arrUser = {
-    //         user_id: this.data_table[0]['user_id'],
-    //         user_fullname: this.data_table[0]['user_fullname'],
-    //         user_email: this.data_table[0]['user_email'],
-    //         user_username: this.data_table[0]['user_username'],
-    //         user_phone: this.data_table[0]['user_phone'],
-    //         user_phone2: this.data_table[0]['user_phone2'],
-    //         user_phone_open: this.data_table[0]['user_phone_open'],
-    //         user_photo: this.data_table[0]['user_photo'],
-    //         user_sex: this.data_table[0]['user_sex'],
-    //         user_active: this.data_table[0]['user_active']
-    //       }
-    //
-    //       //บันทึกข้อมูลที่ได้มาไว้ใน storage ของเครื่อง
-    //       this.storage.set('user_data', arrUser).then((val) => {
-    //
-    //         this.setDataUser();
-    //       });
-    //     }
-    //   }, error => {
-    //   });
-
-      this.http.post(link, send_data, {})
-      .then(data => {
-        this.data_table = JSON.parse(data.data["_body"]);
+    this.http.post(link, send_data)
+      .subscribe(response => {
+        //รับข้อมูลใส่ไว้ในตัวแปร
+        this.data_table = JSON.parse(response["_body"]);
 
         //เช็คว่ามีข้อมูลหรือไม่
         if (this.data_table.length > 0) {
@@ -450,18 +372,10 @@ export class ProfilePage {
             this.setDataUser();
           });
         }
-        console.log(data.status);
-        console.log(data.data); // data received by server
-        console.log(data.headers);
-
-      })
-      .catch(error => {
-
-        console.log(error.status);
-        console.log(error.error); // error message as string
-        console.log(error.headers);
-
+      }, error => {
       });
+
+
   }
 
 }
