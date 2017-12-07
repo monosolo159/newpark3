@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams, ModalController, LoadingController, AlertController } from 'ionic-angular';
-// import { RegisterPage } from '../register/register';
-// import { ForgotPasswordPage } from '../forgot-password/forgot-password';
+import { RegisterPage } from '../register/register';
+import { ForgotPasswordPage } from '../forgot-password/forgot-password';
 import { TabsPage } from '../tabs/tabs';
 import { HttpClient } from '@angular/common/http';
 import { Storage } from '@ionic/storage';
@@ -38,11 +38,11 @@ export class LoginPage {
 
 
   register() {
-    // this.navCtrl.push(RegisterPage, {});
+    this.navCtrl.push(RegisterPage, {});
   }
 
   forgotPassword() {
-    // this.navCtrl.push(ForgotPasswordPage, {});
+    this.navCtrl.push(ForgotPasswordPage, {});
   }
 
 
@@ -74,7 +74,7 @@ export class LoginPage {
 
           //รับข้อมูลใส่ไว้ในตัวแปร
           this.data_table = JSON.parse(response["_body"]);
-
+          console.log(this.data_table);
           //เช็คว่ามีข้อมูลหรือไม่
           if (this.data_table.length > 0) {
 
