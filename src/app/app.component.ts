@@ -21,6 +21,7 @@ export class MyApp {
   rootPage:any = TabsPage;
 
   constructor(public platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen, public server:ServerProvider,public http:HttpClient,public storage:Storage,public alertCtrl:AlertController,public _OneSignal:OneSignal) {
+    // console.log(angular.version);
     storage.get('user_data').then((val) => {
       if (val == null) {
         this.rootPage = LoginPage;
