@@ -25,8 +25,13 @@ export class MyApp {
     storage.get('user_data').then((val) => {
       if (val == null) {
         this.rootPage = LoginPage;
+        console.log("get success");
+        console.log(val);
       } else {
         this.rootPage = TabsPage;
+        console.log("get fail");
+        console.log(val);
+
       }
     });
 

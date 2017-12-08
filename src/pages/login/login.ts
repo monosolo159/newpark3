@@ -22,18 +22,18 @@ export class LoginPage {
   public user_password;
 
   constructor(private _OneSignal: OneSignal, public navCtrl: NavController, public navParams: NavParams, public modalCtrl: ModalController, public loadingCtrl: LoadingController, public http: HttpClient, public alertCtrl: AlertController, public storage: Storage, public server: ServerProvider) {
-    this._OneSignal.getIds()
-      .then((ids) => {
-        this.user_device_id = JSON.parse(JSON.stringify(ids));
-      });
-
-    this.storage.get('user_data').then((val) => {
-      //ถ้ามีข้อมูลให้ไปที่หน้า tabs
-      if (val != null) {
-        this.navCtrl.push(TabsPage, {});
-      }
-
-    });
+    // this._OneSignal.getIds()
+    //   .then((ids) => {
+    //     this.user_device_id = JSON.parse(JSON.stringify(ids));
+    //   });
+    //
+    // this.storage.get('user_data').then((val) => {
+    //   //ถ้ามีข้อมูลให้ไปที่หน้า tabs
+    //   if (val != null) {
+    //     this.navCtrl.push(TabsPage, {});
+    //   }
+    //
+    // });
   }
 
 
