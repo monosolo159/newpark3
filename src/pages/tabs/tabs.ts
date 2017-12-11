@@ -1,10 +1,5 @@
 import { Component, ViewChild } from '@angular/core';
 import { ModalController, NavParams, Tabs, AlertController} from 'ionic-angular';
-// import { AboutPage } from '../about/about';
-// import { ContactPage } from '../contact/contact';
-// import { HomePage } from '../home/home';
-
-
 import { NotificationPage } from './../notification/notification';
 import { ProfilePage } from './../profile/profile';
 import { EmergencyPage } from './../emergency/emergency';
@@ -39,7 +34,8 @@ export class TabsPage {
   public tabsEnable;
 
   constructor(public modalCtrl: ModalController, public navParams: NavParams, public server: ServerProvider, public storage: Storage, public http: HttpClient, public alertCtrl: AlertController) {
-    Observable.interval(1000).subscribe(res => {
+    console.log("page tabs");
+    Observable.interval(2000).subscribe(res => {
       this.storage.get('user_data').then((val) => {
         //ถ้ามีข้อมูลให้ไปที่หน้า tabs
         if (val != null) {
@@ -59,7 +55,7 @@ export class TabsPage {
     this.http.post(link, send_data)
       .subscribe(response => {
         //รับข้อมูลใส่ไว้ในตัวแปร
-        this.data_table = JSON.parse(response["_body"]);
+        this.data_table = JSON.parse(JSON.stringify(response));
 
         //เช็คว่ามีข้อมูลหรือไม่
         if (this.data_table.length < 1) {

@@ -16,7 +16,9 @@ export class RegisterPage {
   public user_password;
   public user_phone;
   public user_sex;
-  constructor(public navCtrl: NavController, public navParams: NavParams, public modalCtrl: ModalController, public loadingCtrl: LoadingController, public http: HttpClient, public alertCtrl: AlertController, public server: ServerProvider) { }
+  constructor(public navCtrl: NavController, public navParams: NavParams, public modalCtrl: ModalController, public loadingCtrl: LoadingController, public http: HttpClient, public alertCtrl: AlertController, public server: ServerProvider) {
+    console.log("page register");
+  }
 
   ionViewWillEnter() {
     this.user_sex = -1;
@@ -61,7 +63,7 @@ export class RegisterPage {
         loading_popup.dismiss();
 
         //รับข้อมูลไว้ที่ตัวแปร
-        this.data_table = JSON.parse(response["_body"]);
+        this.data_table = JSON.parse(JSON.stringify(response));
 
         // เช็คว่ามีข้อมูลหรือไม่
         if (this.data_table.length > 0) {

@@ -24,6 +24,7 @@ export class CarServicePage {
   public mapApi ='AIzaSyBeyl5wC-Q1wBUqQh38lMITihEIolEikAo';
   public linkPic = this.server.linkServerPic();
   constructor(public loadingCtrl: LoadingController, public navCtrl: NavController, public alertCtrl: AlertController, public modalCtrl: ModalController, public storage: Storage, public server: ServerProvider, public http: HttpClient) {
+    console.log("page car service");
     this.infoWindows = [];
   }
 

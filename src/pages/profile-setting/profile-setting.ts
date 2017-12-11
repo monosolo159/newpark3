@@ -25,7 +25,7 @@ export class ProfileSettingPage {
   public user_phone_open;
   public telPhone;
   constructor(public navCtrl: NavController, public navParams: NavParams, public modalCtrl: ModalController, public loadingCtrl: LoadingController, public http: HttpClient, public alertCtrl: AlertController, public storage: Storage, public server: ServerProvider) {
-
+    console.log("page profile setting");
     this.user_id = this.navParams.get('user_id');
     this.reload_user();
 
@@ -76,7 +76,7 @@ export class ProfileSettingPage {
     this.http.post(link, send_data)
       .subscribe(response => {
         //รับข้อมูลใส่ไว้ในตัวแปร
-        this.data_table = JSON.parse(response["_body"]);
+        this.data_table = JSON.parse(JSON.stringify(response));
 
         //เช็คว่ามีข้อมูลหรือไม่
         if (this.data_table.length > 0) {

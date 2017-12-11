@@ -19,15 +19,16 @@ export class CarPage {
   public user_id = '';
   public linkPic = this.server.linkServerPic();
   constructor(public loadingCtrl: LoadingController, public navCtrl: NavController, public alertCtrl: AlertController, public modalCtrl: ModalController, public storage: Storage, public server: ServerProvider, public http: HttpClient) {
-    Observable.interval(1000).subscribe(res => {
-      this.reloadData();
-    });
+    console.log("page car");
+    // Observable.interval(1000).subscribe(res => {
+    //   this.reloadData();
+    // });
   }
 
-  //โหลดข้อมูลทุกครั้งที่เปิดหน้านี้
-  // ionViewWillEnter() {
-  //   this.reloadData();
-  // }
+  // โหลดข้อมูลทุกครั้งที่เปิดหน้านี้
+  ionViewWillEnter() {
+    this.reloadData();
+  }
 
   reloadData() {
     //ดึงข้อมูล user จาก storage ที่บันทึกไว้ในเครื่อง
@@ -66,7 +67,7 @@ export class CarPage {
         // loading_popup.dismiss();
         // loading_popup.dismiss();
         //หากมีการคืนค่ามาให้ ทำการรับค่าและเก็บไว้
-        this.data_table = JSON.parse(response["_body"]);
+        this.data_table = JSON.parse(JSON.stringify(response));
 
       }, error => {
       });

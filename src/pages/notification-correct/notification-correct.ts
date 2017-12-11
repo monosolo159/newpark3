@@ -22,6 +22,7 @@ export class NotificationCorrectPage {
   // public notification_date_correct_check;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public server: ServerProvider, public http: HttpClient, public storage: Storage, public alertCtrl: AlertController) {
+    console.log("page notification correct");
     // this.notification_date_correct = new Date().toISOString();
   }
 
@@ -45,7 +46,7 @@ export class NotificationCorrectPage {
       .subscribe(response => {
         //หากมีการคืนค่ามาให้ ทำการรับค่าและเก็บไว้
 
-        this.data_table_warning = JSON.parse(response["_body"]);
+        this.data_table_warning = JSON.parse(JSON.stringify(response));
 
         // this.notification_date_correct_check = this.data_table_warning[0]['notification_date_correct'];
       }, error => {

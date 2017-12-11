@@ -39,7 +39,9 @@ export class ProfilePage {
   public user_phone_open;
   public user_photo = '';
   public isToggled: boolean;
-  constructor(public navCtrl: NavController, public actionSheetCtrl: ActionSheetController, public alertCtrl: AlertController, public platform: Platform, public loadingCtrl: LoadingController, public toastCtrl: ToastController, public server: ServerProvider, public storage: Storage, public http: HttpClient, public app: App,public transfer: FileTransfer, public file: File,public crop: Crop,public camera: Camera) { }
+  constructor(public navCtrl: NavController, public actionSheetCtrl: ActionSheetController, public alertCtrl: AlertController, public platform: Platform, public loadingCtrl: LoadingController, public toastCtrl: ToastController, public server: ServerProvider, public storage: Storage, public http: HttpClient, public app: App,public transfer: FileTransfer, public file: File,public crop: Crop,public camera: Camera) {
+    console.log("page profile");
+  }
 
   ionViewWillEnter() {
     this.setDataUser();
@@ -87,6 +89,7 @@ export class ProfilePage {
       this.user_phone = val['user_phone'];
       this.user_phone2 = val['user_phone2'];
       this.user_photo = this.linkPicProfile + val['user_photo'];
+      console.log(this.user_photo);
       this.user_phone_open = val['user_phone_open'];
       // console.log(val['user_phone_open']);
       if (val['user_sex'] == 0) {
@@ -146,8 +149,6 @@ export class ProfilePage {
 
               this.http.post(link, send_data).subscribe(response => { }, error => { });
 
-
-
               let navCtrl = this.app.getRootNav();
               navCtrl.setRoot(LoginPage);
             });
@@ -186,6 +187,7 @@ export class ProfilePage {
   }
 
   public takePicture(sourceType) {
+    console.log('takePicture');
     //คุณสมบัติของภาพ
     var options = {
       quality: 100,
@@ -239,6 +241,8 @@ export class ProfilePage {
 
 
   private createFileName() {
+    console.log('createFileName');
+
     var d = new Date();
     var n = d.getTime();
     var newFileName = this.user_id + '_' + n + ".jpg";
@@ -246,6 +250,8 @@ export class ProfilePage {
   }
 
   private copyFileToLocalDir(namePath, currentName, newFileName) {
+    console.log('copyFileToLocalDir');
+
     this.file.copyFile(namePath, currentName, cordova.file.dataDirectory, newFileName).then(success => {
       this.lastImage = newFileName;
       this.uploadImage();
@@ -274,6 +280,7 @@ export class ProfilePage {
 
   public uploadImage() {
     // Destination URL
+    console.log('uploadImage');
 
     var url = this.server.linkServer() + "user_service/uploadImage";
     // var url = this.server.linkServer() + "car_service/uploadImage";
@@ -311,23 +318,30 @@ export class ProfilePage {
 
 
   public userUpdatePhoto() {
+    console.log('userUpdatePhoto 1');
+
     let loading_popup = this.loadingCtrl.create({});
     loading_popup.present();
+    console.log('userUpdatePhoto 2');
 
     var send_data = {
       'user_id': this.user_id,
       'user_photo': this.lastImage
     };
+
     var link = this.server.linkServer() + "user_service/userUpdatePhoto";
 
     this.http.post(link, send_data)
       .subscribe(response => {
+        console.log('userUpdatePhoto 4');
+
         this.user_photo = this.lastImage;
         loading_popup.dismiss();
         this.reload_user();
         this.navCtrl.pop();
       }, error => {
       });
+      console.log('userUpdatePhoto 5');
 
   }
 
@@ -348,7 +362,7 @@ export class ProfilePage {
     this.http.post(link, send_data)
       .subscribe(response => {
         //รับข้อมูลใส่ไว้ในตัวแปร
-        this.data_table = JSON.parse(response["_body"]);
+        this.data_table = JSON.parse(JSON.stringify(response));
 
         //เช็คว่ามีข้อมูลหรือไม่
         if (this.data_table.length > 0) {

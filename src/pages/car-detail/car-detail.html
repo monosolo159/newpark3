@@ -11,7 +11,7 @@
     <ion-grid>
 
       <ion-row>
-        <ion-col width-50>
+        <ion-col col-6>
           <section (click)="presentActionSheet(0)" class="customSection" [style.background-color]="'#ffcd00'" [style.color]="'#000000'">
             <ion-label stacked>ภาพด้านหน้ารถ</ion-label>
             <ion-thumbnail>
@@ -21,7 +21,7 @@
             <ion-icon name="camera"></ion-icon>
           </section>
         </ion-col>
-        <ion-col width-50>
+        <ion-col col-6>
           <section (click)="presentActionSheet(1)" class="customSection" [style.background-color]="'#ffcd00'" [style.color]="'#000000'">
             <ion-label stacked>ภาพด้านหลังรถ</ion-label>
             <ion-thumbnail>
@@ -36,7 +36,7 @@
       </ion-row>
 
       <ion-row>
-        <ion-col width-50>
+        <ion-col col-6>
           <section (click)="presentActionSheet(2)" class="customSection" [style.background-color]="'#ffcd00'" [style.color]="'#000000'">
             <ion-label stacked>ภาพด้านซ้ายรถ</ion-label>
             <ion-thumbnail>
@@ -47,7 +47,7 @@
             <ion-icon name="camera"></ion-icon>
           </section>
         </ion-col>
-        <ion-col width-50>
+        <ion-col col-6>
           <section (click)="presentActionSheet(3)" class="customSection" [style.background-color]="'#ffcd00'" [style.color]="'#000000'">
             <ion-label stacked>ภาพด้านขวารถ</ion-label>
             <ion-thumbnail>
@@ -119,8 +119,8 @@
       </ion-row>
 
       <ion-row>
-        <ion-col width-50><button ion-button color="parkYellow" (click)="carEdit()" block>บันทึก</button></ion-col>
-        <ion-col width-50><button ion-button color="parkYellow" (click)="carDelete()" block>ลบ</button></ion-col>
+        <ion-col col-6><button ion-button color="parkYellow" (click)="carEdit()" block>บันทึก</button></ion-col>
+        <ion-col col-6><button ion-button color="parkYellow" (click)="carDelete()" block>ลบ</button></ion-col>
       </ion-row>
     </ion-grid>
   </ion-item-group>

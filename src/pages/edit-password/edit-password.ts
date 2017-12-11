@@ -16,7 +16,9 @@ export class EditPasswordPage {
   public user_password;
   public user_password_confirm;
   public user_id;
-  constructor(public navCtrl: NavController, public navParams: NavParams, public http: HttpClient, public alertCtrl: AlertController, public storage: Storage, public app: App, public server: ServerProvider) { }
+  constructor(public navCtrl: NavController, public navParams: NavParams, public http: HttpClient, public alertCtrl: AlertController, public storage: Storage, public app: App, public server: ServerProvider) {
+    console.log("page edit password");
+  }
 
   //ทำงานทุกครั้งที่เปิดหน้านี้
   ionViewWillEnter() {
@@ -68,7 +70,7 @@ export class EditPasswordPage {
       .subscribe(response => {
 
 
-        this.data_table = JSON.parse(response["_body"]);
+        this.data_table = JSON.parse(JSON.stringify(response));
 
         //เช็คว่ามีข้อมูลหรือไม่
         if (this.data_table.length > 0) {

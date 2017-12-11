@@ -48,7 +48,7 @@ export class CarDetailPage {
   public car_pic_right;
 
   constructor(public file:File,public crop:Crop,public transfer: FileTransfer,public camera:Camera,public alertCtrl: AlertController, public navCtrl: NavController, public navParams: NavParams, public actionSheetCtrl: ActionSheetController, public toastCtrl: ToastController, public platform: Platform, public loadingCtrl: LoadingController, public server: ServerProvider, public storage: Storage, public http: HttpClient) {
-
+    console.log("page car detail");
   }
 
   ionViewWillEnter() {
@@ -66,7 +66,7 @@ export class CarDetailPage {
     this.http.post(link, send_data)
       .subscribe(response => {
         //หากมีข้อมู,ส่งคืนกลับมาให้ใส่ตัวแปรไว้
-        this.data_table_color = JSON.parse(response["_body"]);
+        this.data_table_color = JSON.parse(JSON.stringify(response));
         console.log("getCarColor");
       }, error => {
       });
@@ -84,7 +84,7 @@ export class CarDetailPage {
       .subscribe(response => {
         //หากมีการคืนค่ามาให้ ทำการรับค่าและเก็บไว้
 
-        this.data_table_car = JSON.parse(response["_body"]);
+        this.data_table_car = JSON.parse(JSON.stringify(response));
 
         this.car_user_id = this.data_table_car[0]['car_user_id'];
         this.car_id = this.data_table_car[0]['car_id'];
@@ -121,7 +121,7 @@ export class CarDetailPage {
     this.http.post(link, send_data)
       .subscribe(response => {
         //หากมีข้อมู,ส่งคืนกลับมาให้ใส่ตัวแปรไว้
-        this.data_table_province = JSON.parse(response["_body"]);
+        this.data_table_province = JSON.parse(JSON.stringify(response));
         console.log('getProvince');
       }, error => {
       });
@@ -135,7 +135,7 @@ export class CarDetailPage {
     this.http.post(link, send_data)
       .subscribe(response => {
         //หากมีข้อมู,ส่งคืนกลับมาให้ใส่ตัวแปรไว้
-        this.data_table_brand = JSON.parse(response["_body"]);
+        this.data_table_brand = JSON.parse(JSON.stringify(response));
         console.log('getCarBrand');
         // this.car_brand_id = 0;
       }, error => {
@@ -150,7 +150,7 @@ export class CarDetailPage {
     this.http.post(link, send_data)
       .subscribe(response => {
         //หากมีข้อมู,ส่งคืนกลับมาให้ใส่ตัวแปรไว้
-        this.data_table_brand_year = JSON.parse(response["_body"]);
+        this.data_table_brand_year = JSON.parse(JSON.stringify(response));
         console.log('getCarBrandYear');
         // this.car_year = 0;
       }, error => {
@@ -164,7 +164,7 @@ export class CarDetailPage {
     this.http.post(link, send_data)
       .subscribe(response => {
         //หากมีข้อมู,ส่งคืนกลับมาให้ใส่ตัวแปรไว้
-        this.data_table_model = JSON.parse(response["_body"]);
+        this.data_table_model = JSON.parse(JSON.stringify(response));
         console.log('getCarModel');
         // this.car_model_id = 0;
       }, error => {

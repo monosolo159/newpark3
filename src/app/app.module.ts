@@ -31,7 +31,7 @@ import { NotificationCorrectPage } from '../pages/notification-correct/notificat
 import { ProfileEditPage } from '../pages/profile-edit/profile-edit';
 import { ProfileSettingPage } from '../pages/profile-setting/profile-setting';
 
-// import { MomentModule } from 'angular2-moment';
+import { MomentModule } from 'angular2-moment';
 // import 'moment/locale/th';
 
 import { StatusBar } from '@ionic-native/status-bar';
@@ -69,7 +69,7 @@ import { Geolocation } from '@ionic-native/geolocation';
     ProfileSettingPage
   ],
   imports: [
-    // MomentModule,
+    MomentModule,
     BrowserModule,
     HttpClientModule,
     IonicModule.forRoot(MyApp),

@@ -17,7 +17,7 @@ export class NewsPage {
   public linkPic = this.server.linkServerPicNews();
   public xxx;
   constructor(public navCtrl: NavController, public modalCtrl: ModalController, public loadingCtrl: LoadingController, public http: HttpClient, public alertCtrl: AlertController, public storage: Storage, public server: ServerProvider) {
-
+    console.log("page news");
   }
 
   // ทำงานทุกครั้งที่เข้าหน้านี้
@@ -55,7 +55,7 @@ export class NewsPage {
         // loading_popup.dismiss();
         // loading_popup.dismiss();//เมื่อโหลดเสร็จแล้วให้ปิด popup
         // นำข้อมูลจาก mysql มาแสดงในตัวเลือกของ select controller
-        this.data_table_myNews = JSON.parse(response["_body"]);
+        this.data_table_myNews = JSON.parse(JSON.stringify(response));
         // this.xxx = MomentModule.moment("20111031", "YYYYMMDD").fromNow();
       }, error => {
 

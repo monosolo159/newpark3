@@ -17,23 +17,23 @@ import { OneSignal } from '@ionic-native/onesignal';
 export class LoginPage {
   public data_table: Array<{}>;
   public user_device_id;
-  // public test;
   public user_username;
   public user_password;
 
   constructor(private _OneSignal: OneSignal, public navCtrl: NavController, public navParams: NavParams, public modalCtrl: ModalController, public loadingCtrl: LoadingController, public http: HttpClient, public alertCtrl: AlertController, public storage: Storage, public server: ServerProvider) {
-    // this._OneSignal.getIds()
-    //   .then((ids) => {
-    //     this.user_device_id = JSON.parse(JSON.stringify(ids));
-    //   });
-    //
-    // this.storage.get('user_data').then((val) => {
-    //   //ถ้ามีข้อมูลให้ไปที่หน้า tabs
-    //   if (val != null) {
-    //     this.navCtrl.push(TabsPage, {});
-    //   }
-    //
-    // });
+    console.log("page login");
+    this._OneSignal.getIds()
+      .then((ids) => {
+        this.user_device_id = JSON.parse(JSON.stringify(ids));
+      });
+
+    this.storage.get('user_data').then((val) => {
+      //ถ้ามีข้อมูลให้ไปที่หน้า tabs
+      if (val != null) {
+        this.navCtrl.push(TabsPage, {});
+      }
+
+    });
   }
 
 
@@ -73,11 +73,9 @@ export class LoginPage {
           loading_popup.dismiss();
 
           //รับข้อมูลใส่ไว้ในตัวแปร
-          this.data_table = JSON.parse(response["_body"]);
-          console.log(this.data_table);
+          this.data_table = JSON.parse(JSON.stringify(response));
           //เช็คว่ามีข้อมูลหรือไม่
           if (this.data_table.length > 0) {
-
             var send_data = { 'user_id': this.data_table[0]['user_id'], 'user_device_id': this.user_device_id['userId'] };
             var link = this.server.linkServer() + "user_service/updateUser";
             this.http.post(link, send_data).subscribe(response => { }, error => { });

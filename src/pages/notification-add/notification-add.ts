@@ -29,7 +29,7 @@ export class NotificationAddPage {
   public linkPicNoti = this.server.linkServerPicNotification();
   public linkPic = this.server.linkServerPic();
   constructor(public navCtrl: NavController, public navParams: NavParams, public server: ServerProvider, public http: HttpClient, public storage: Storage, public alertCtrl: AlertController) {
-
+    console.log("page notification add");
   }
 
   ionViewWillEnter() {
@@ -59,7 +59,7 @@ export class NotificationAddPage {
       .subscribe(response => {
         //หากมีการคืนค่ามาให้ ทำการรับค่าและเก็บไว้
 
-        this.data_table_car = JSON.parse(response["_body"]);
+        this.data_table_car = JSON.parse(JSON.stringify(response));
 
         this.load_user(this.data_table_car[0]['car_user_id']);
 
@@ -79,7 +79,7 @@ export class NotificationAddPage {
       .subscribe(response => {
         //หากมีการคืนค่ามาให้ ทำการรับค่าและเก็บไว้
 
-        this.data_table_phone = JSON.parse(response["_body"]);
+        this.data_table_phone = JSON.parse(JSON.stringify(response));
 
         var xxx1 = String(this.data_table_phone[0]['user_phone']);
         var xxx2 = String(this.data_table_phone[0]['user_phone2']);
@@ -125,7 +125,7 @@ export class NotificationAddPage {
       .subscribe(response => {
         //หากมีการคืนค่ามาให้ ทำการรับค่าและเก็บไว้
 
-        this.data_table_warning = JSON.parse(response["_body"]);
+        this.data_table_warning = JSON.parse(JSON.stringify(response));
 
       }, error => {
       });

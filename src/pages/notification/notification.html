@@ -55,7 +55,7 @@
           <ion-row>
             <ion-col>
 
-              <ion-col width-50 offset-25><button ion-button color="parkYellow" (click)="getSearchCar()" block>ค้นหา</button></ion-col>
+              <ion-col col-6 offset-3><button ion-button color="parkYellow" (click)="getSearchCar()" block>ค้นหา</button></ion-col>
 
             </ion-col>
           </ion-row>
@@ -64,10 +64,10 @@
             <section>
               <ion-item no-lines>
                 <ion-row (click)="addNotification(row.car_id,row.car_user_id)">
-                  <ion-col width-33>
+                  <ion-col col-4>
                     <img src="{{linkPic}}{{row.car_pic_front}}">
                   </ion-col>
-                  <ion-col width-67>
+                  <ion-col col-8>
                     <p>ทะเบียน : {{row.car_license_plate}}</p>
                     <p>จังหวัด : {{row.province_name}}</p>
                     <p>ยี่ห้อ : {{row.car_brand_name}}</p>
@@ -88,19 +88,19 @@
               <section>
                 <ion-item>
                   <ion-row>
-                    <ion-col width-33 style="text-align:center">
+                    <ion-col col-4 style="text-align:center">
                       <ion-thumbnail style="text-align:center">
                         <img src="{{linkPicNoti}}{{row.warning_list_id}}.jpg">
                       </ion-thumbnail>
                       <button *ngIf="row.notification_status==0" ion-button color="parkYellow" (click)="activeNotification(row.notification_id)" block>รับทราบ</button>
                     </ion-col>
-                    <ion-col width-67>
+                    <ion-col col-8>
                       <p>แจ้งเตือน : {{row.warning_list_name}}</p>
                       <p>ทะเบียน : {{row.car_license_plate}}</p>
                       <p>ยี่ห้อ : {{row.car_brand_name}}</p>
                       <p>ปี : {{row.car_brand_year}}</p>
                       <p>รุ่น : {{row.car_model_name}}</p>
-                      <!-- <p>เวลา : {{row.notification_date|amTimeAgo}}</p> -->
+                      <p>เวลา : {{row.notification_date|amTimeAgo}}</p>
                     </ion-col>
                   </ion-row>
                   <!-- <ion-row>

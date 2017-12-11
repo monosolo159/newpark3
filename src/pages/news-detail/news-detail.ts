@@ -17,6 +17,7 @@ export class NewsDetailPage {
 
   //  constructor(public navCtrl: NavController, public modalCtrl: ModalController, private promotion: Promotion) { }
   constructor(public navCtrl: NavController, public modalCtrl: ModalController, public loadingCtrl: LoadingController, public http: HttpClient, public alertCtrl: AlertController, public storage: Storage, public server: ServerProvider, public navParams: NavParams) {
+    console.log("page news detail");
     this.news_user_id = this.navParams.get('news_user_id');
     this.load_myNews(this.news_user_id);
   }
@@ -32,7 +33,7 @@ export class NewsDetailPage {
 
         // loading_popup.dismiss();//เมื่อโหลดเสร็จแล้วให้ปิด popup
         // นำข้อมูลจาก mysql มาแสดงในตัวเลือกของ select controller
-        this.data_table_myNews = JSON.parse(response["_body"]);
+        this.data_table_myNews = JSON.parse(JSON.stringify(response));
 
       }, error => {
 

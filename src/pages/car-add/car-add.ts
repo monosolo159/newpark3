@@ -52,7 +52,7 @@ export class CarAddPage {
 
 
   constructor(public transfer: FileTransfer,public crop:Crop,public file:File,public camera:Camera,public alertCtrl: AlertController, public navCtrl: NavController, public navParams: NavParams, public actionSheetCtrl: ActionSheetController, public toastCtrl: ToastController, public platform: Platform, public loadingCtrl: LoadingController, public server: ServerProvider, public storage: Storage, public http: HttpClient) {
-
+    console.log("page car add");
   }
 
   ionViewWillEnter() {
@@ -85,7 +85,7 @@ export class CarAddPage {
     this.http.post(link, send_data)
       .subscribe(response => {
         //หากมีข้อมู,ส่งคืนกลับมาให้ใส่ตัวแปรไว้
-        this.data_table_province = JSON.parse(response["_body"]);
+        this.data_table_province = JSON.parse(JSON.stringify(response));
       }, error => {
       });
   }
@@ -98,7 +98,7 @@ export class CarAddPage {
     this.http.post(link, send_data)
       .subscribe(response => {
         //หากมีข้อมู,ส่งคืนกลับมาให้ใส่ตัวแปรไว้
-        this.data_table_brand = JSON.parse(response["_body"]);
+        this.data_table_brand = JSON.parse(JSON.stringify(response));
 
       }, error => {
       });
@@ -112,7 +112,7 @@ export class CarAddPage {
     this.http.post(link, send_data)
       .subscribe(response => {
         //หากมีข้อมู,ส่งคืนกลับมาให้ใส่ตัวแปรไว้
-        this.data_table_brand_year = JSON.parse(response["_body"]);
+        this.data_table_brand_year = JSON.parse(JSON.stringify(response));
         this.car_year = 0;
       }, error => {
       });
@@ -125,7 +125,7 @@ export class CarAddPage {
     this.http.post(link, send_data)
       .subscribe(response => {
         //หากมีข้อมู,ส่งคืนกลับมาให้ใส่ตัวแปรไว้
-        this.data_table_model = JSON.parse(response["_body"]);
+        this.data_table_model = JSON.parse(JSON.stringify(response));
 
       }, error => {
       });
@@ -138,7 +138,7 @@ export class CarAddPage {
     this.http.post(link, send_data)
       .subscribe(response => {
         //หากมีข้อมู,ส่งคืนกลับมาให้ใส่ตัวแปรไว้
-        this.data_table_color = JSON.parse(response["_body"]);
+        this.data_table_color = JSON.parse(JSON.stringify(response));
 
       }, error => {
       });

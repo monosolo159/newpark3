@@ -21,7 +21,7 @@
                     <p>{{row.news_name}}</p>
 
                     <div [innerHTML]="'<p>' + row.news_detail + '</p>'"></div>
-                    <!-- <p>{{row.news_date_add|amTimeAgo}}</p> -->
+                    <p>{{row.news_date_add|amTimeAgo}}</p>
                     <!-- <p>{{row.news_date_end}}</p> -->
                     <div *ngIf="row.news_value!=0">
                       <p>{{row.news_count}}/{{row.news_value}}</p>

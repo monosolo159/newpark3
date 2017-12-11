@@ -12,6 +12,7 @@ export class EmergencyPage {
 
   constructor(public navCtrl: NavController, public modalCtrl: ModalController, public loadingCtrl: LoadingController, public http: HttpClient, public alertCtrl: AlertController, public server: ServerProvider) {
     // this.load_allEmergency();
+    console.log("page emergency");
   }
 
   ionViewWillEnter() {
@@ -32,7 +33,7 @@ export class EmergencyPage {
 
         // loading_popup.dismiss();//เมื่อโหลดเสร็จแล้วให้ปิด popup
         // นำข้อมูลจาก mysql มาแสดงในตัวเลือกของ select controller
-        this.data_table = JSON.parse(response["_body"]);
+        this.data_table = JSON.parse(JSON.stringify(response));
 
       }, error => {
 

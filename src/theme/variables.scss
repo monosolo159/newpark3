@@ -38,7 +38,13 @@ $colors: (
   secondary:  #32db64,
   danger:     #f53d3d,
   light:      #f4f4f4,
-  dark:       #222
+  dark:       #222,
+  grey:       #f8f9fa,
+  parkYellow: #FFCD00,
+  parkOrange: #FF9800,
+  parkCream:  #FFFBDA,
+  parkGray:   #6A6A6A,
+  parkBlack:  #000000,
 );
 
 
@@ -77,6 +83,9 @@ $colors: (
 // --------------------------------------------------
 // The premium icon font for Ionic. For more info, please see:
 // http://ionicframework.com/docs/ionicons/
+// $ionicons-font-path: "../assets/fonts";
+$toolbar-ios-height: 4rem; // ios
+$toolbar-md-height: 4rem; // android
 
 @import "ionic.ionicons";
 

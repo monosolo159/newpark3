@@ -35,6 +35,7 @@ export class NotificationPage {
   public user_id;
   public countBadge = 0;
   constructor(public platform: Platform, public navCtrl: NavController, public modalCtrl: ModalController, public server: ServerProvider, public http: HttpClient, public storage: Storage, public alertCtrl: AlertController) {
+    console.log("page notification");
     Observable.interval(1000).subscribe(res => {
       this.getNotification();
     });
@@ -81,7 +82,7 @@ export class NotificationPage {
     this.http.post(link, send_data,{})
       .subscribe(response => {
         //หากมีข้อมู,ส่งคืนกลับมาให้ใส่ตัวแปรไว้
-        this.data_table_notification = JSON.parse(response["_body"]);
+        this.data_table_notification = JSON.parse(JSON.stringify(response));
 
         this.countBadges();
       }, error => {
@@ -96,7 +97,7 @@ export class NotificationPage {
     this.http.post(link, send_data)
       .subscribe(response => {
         //หากมีข้อมู,ส่งคืนกลับมาให้ใส่ตัวแปรไว้
-        this.data_table_province = JSON.parse(response["_body"]);
+        this.data_table_province = JSON.parse(JSON.stringify(response));
       }, error => {
       });
 
@@ -126,7 +127,7 @@ export class NotificationPage {
     this.http.post(link, send_data)
       .subscribe(response => {
         //หากมีข้อมู,ส่งคืนกลับมาให้ใส่ตัวแปรไว้
-        this.data_table_car = JSON.parse(response["_body"]);
+        this.data_table_car = JSON.parse(JSON.stringify(response));
 
         if (this.data_table_car.length < 1) {
           let alert = this.alertCtrl.create({

@@ -13,7 +13,9 @@ export class ForgotPasswordPage {
   public data_table_user: Array<{}>;
   public data_table: Array<{}>;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public modalCtrl: ModalController, public http: HttpClient, public loadingCtrl: LoadingController, public server: ServerProvider, public alertCtrl: AlertController) { }
+  constructor(public navCtrl: NavController, public navParams: NavParams, public modalCtrl: ModalController, public http: HttpClient, public loadingCtrl: LoadingController, public server: ServerProvider, public alertCtrl: AlertController) {
+    console.log("page forgot password");
+  }
 
   //ขอรหัสผ่านใหม่
   forgotPassword() {
@@ -43,7 +45,7 @@ export class ForgotPasswordPage {
       .subscribe(response => {
         loading_popup.dismiss();
 
-        this.data_table_user = JSON.parse(response["_body"]);
+        this.data_table_user = JSON.parse(JSON.stringify(response));
 
         //เช็คว่ามีข้อมูลหรือไม่
         if (this.data_table_user.length > 0) {
@@ -80,7 +82,7 @@ export class ForgotPasswordPage {
       .subscribe(response => {
         loading_popup.dismiss();
 
-        this.data_table = JSON.parse(response["_body"]);
+        this.data_table = JSON.parse(JSON.stringify(response));
 
         //เช็คว่ามีข้อมูลหรือไม่
         if (this.data_table.length > 0) {

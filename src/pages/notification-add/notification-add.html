@@ -11,7 +11,7 @@
   <ion-item-group class="people-group" *ngFor="let row of data_table_car">
     <ion-grid>
       <ion-row>
-        <ion-col width-50 offset-25>
+        <ion-col col-6 offset-3>
           <section>
             <ion-thumbnail>
               <img src="{{linkPic}}{{row.car_pic_front}}" [hidden]="row.car_pic_front === ''">
@@ -22,9 +22,9 @@
 
       </ion-row>
       <ion-row>
-        <ion-col width-100>
+        <ion-col col-12>
 
-          <ion-row width-100>
+          <ion-row col-12>
 
             <ion-col>
               <section>
@@ -40,7 +40,7 @@
 
           </ion-row>
 
-          <ion-row width-100>
+          <ion-row col-12>
 
             <ion-col>
               <section>

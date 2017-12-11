@@ -15,10 +15,10 @@
         <section (click)="carDetail(row.car_id)" [style.background-image]="'url(' + linkPic+ row.car_pic_front+ ')'">
           <ion-item no-lines>
             <ion-row class="customDetail">
-              <ion-col width-75>
+              <ion-col col-9>
                 <p>{{row.car_brand_name}} - {{row.car_model_name}}</p>
               </ion-col>
-              <ion-col width-25>
+              <ion-col col-3>
                 <p>{{row.car_license_plate}}</p>
               </ion-col>
             </ion-row>

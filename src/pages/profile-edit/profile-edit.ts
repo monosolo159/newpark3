@@ -22,6 +22,7 @@ export class ProfileEditPage {
   public user_sex;
   public user_active;
   constructor(public navCtrl: NavController, public navParams: NavParams, public modalCtrl: ModalController, public loadingCtrl: LoadingController, public http: HttpClient, public alertCtrl: AlertController, public storage: Storage, public server: ServerProvider) {
+    console.log("page profile edit");
     storage.get('user_data').then((val) => {
       this.user_id = val['user_id'];
       this.user_username = val['user_username'];
@@ -88,7 +89,7 @@ export class ProfileEditPage {
     this.http.post(link, send_data)
       .subscribe(response => {
 
-        this.data_table = JSON.parse(response["_body"]);
+        this.data_table = JSON.parse(JSON.stringify(response));
 
         // ตรวจสอบว่ามีข้อมูลหรือไม่
         if (this.data_table.length > 0) {
