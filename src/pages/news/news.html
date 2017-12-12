@@ -12,10 +12,10 @@
       <ion-row *ngFor="let row of data_table_myNews" style="padding-top:1%;">
         <section>
           <ion-row style="height:120px;">
-            <ion-col col-6 class="cusImage" [style.background-image]="'url(' + linkPic+ row.news_pic+ ')'">
+            <ion-col col-5 class="cusImage" [style.background-image]="'url(' + linkPic+ row.news_pic+ ')'">
               <!-- <img class="cusImage" [hidden]="row.news_pic === null || row.news_pic === ''" src="{{linkPic}}{{row.news_pic}}"> -->
             </ion-col>
-            <ion-col col-6 style="padding-left:1%;">
+            <ion-col col-7 style="padding-left:1%;">
               <ion-item>
                 <ion-row>
                   <ion-col>
@@ -23,16 +23,16 @@
                     <p>{{row.news_user_date|amTimeAgo}}</p>
                   </ion-col>
                 </ion-row>
-                <ion-row style="height:50px;">
+                <ion-row style="height:40px;">
                   <button item-left *ngIf="row.news_user_status ==1" color="parkYellow" disabled ion-button small outline>รับสิทธิ์</button>
                   <a button item-left *ngIf="row.news_phone !=null " href="tel:{{row.news_phone}}" color="parkYellow" ion-button small>โทร</a>
                   <a style="width:30px;" button item-left *ngIf="row.news_line !=null" href="{{row.news_line}}" color="parkYellow" ion-button small>ไลน์</a>
                 </ion-row>
                 <ion-row col-12>
-                  <ion-col col-6>
-                  </ion-col>
-                  <ion-col col-6>
-                    <button width-3 offset-6 (click)="news_detail(row.news_user_id)" color="parkYellow" ion-button small>อ่านต่อ</button>
+                  <ion-col col-12>
+                    <ion-item>
+                      <button ion-button item-right (click)="news_detail(row.news_user_id)" color="parkYellow" small>อ่านต่อ</button>
+                    </ion-item>
                   </ion-col>
                 </ion-row>
               </ion-item>

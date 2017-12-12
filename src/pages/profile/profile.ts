@@ -318,11 +318,11 @@ export class ProfilePage {
 
 
   public userUpdatePhoto() {
-    console.log('userUpdatePhoto 1');
+    // console.log('userUpdatePhoto 1');
 
     let loading_popup = this.loadingCtrl.create({});
     loading_popup.present();
-    console.log('userUpdatePhoto 2');
+    // console.log('userUpdatePhoto 2');
 
     var send_data = {
       'user_id': this.user_id,
@@ -338,8 +338,10 @@ export class ProfilePage {
         this.user_photo = this.lastImage;
         loading_popup.dismiss();
         this.reload_user();
-        this.navCtrl.pop();
+        // this.navCtrl.pop();
       }, error => {
+        console.log("error upload");
+        // console.log(error);
       });
       console.log('userUpdatePhoto 5');
 

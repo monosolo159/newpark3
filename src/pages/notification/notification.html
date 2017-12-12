@@ -88,13 +88,13 @@
               <section>
                 <ion-item>
                   <ion-row>
-                    <ion-col col-4 style="text-align:center">
+                    <ion-col col-5 style="text-align:center">
                       <ion-thumbnail style="text-align:center">
                         <img src="{{linkPicNoti}}{{row.warning_list_id}}.jpg">
                       </ion-thumbnail>
                       <button *ngIf="row.notification_status==0" ion-button color="parkYellow" (click)="activeNotification(row.notification_id)" block>รับทราบ</button>
                     </ion-col>
-                    <ion-col col-8>
+                    <ion-col col-7>
                       <p>แจ้งเตือน : {{row.warning_list_name}}</p>
                       <p>ทะเบียน : {{row.car_license_plate}}</p>
                       <p>ยี่ห้อ : {{row.car_brand_name}}</p>

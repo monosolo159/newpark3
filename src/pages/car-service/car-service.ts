@@ -35,7 +35,7 @@ export class CarServicePage {
 
   ionViewDidEnter() {
     this.displayGoogleMap();
-    this.getMarkers();
+    // this.getMarkers();
   }
 
   displayGoogleMap() {
