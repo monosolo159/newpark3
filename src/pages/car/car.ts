@@ -20,9 +20,9 @@ export class CarPage {
   public linkPic = this.server.linkServerPic();
   constructor(public loadingCtrl: LoadingController, public navCtrl: NavController, public alertCtrl: AlertController, public modalCtrl: ModalController, public storage: Storage, public server: ServerProvider, public http: HttpClient) {
     console.log("page car");
-    // Observable.interval(1000).subscribe(res => {
-    //   this.reloadData();
-    // });
+    Observable.interval(3000).subscribe(res => {
+      this.reloadData();
+    });
   }
 
   // โหลดข้อมูลทุกครั้งที่เปิดหน้านี้
@@ -64,10 +64,9 @@ export class CarPage {
     //ทำการส่งข้อมูลไปที่เว็บเซอวิส
     this.http.post(link, send_data)
       .subscribe(response => {
-        // loading_popup.dismiss();
-        // loading_popup.dismiss();
         //หากมีการคืนค่ามาให้ ทำการรับค่าและเก็บไว้
         this.data_table = JSON.parse(JSON.stringify(response));
+        // loading_popup.dismiss();
 
       }, error => {
       });

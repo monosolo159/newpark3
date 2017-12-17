@@ -1,5 +1,7 @@
-import { Component, ViewChild } from '@angular/core';
-import { App, Platform, Nav, AlertController } from 'ionic-angular';
+import { Component } from '@angular/core';
+// import { Component, ViewChild } from '@angular/core';
+import { Platform, AlertController } from 'ionic-angular';
+// import { App, Platform, Nav, AlertController } from 'ionic-angular';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 
@@ -18,19 +20,20 @@ import { TabsPage } from '../pages/tabs/tabs';
   templateUrl: 'app.html'
 })
 export class MyApp {
-  rootPage:any = TabsPage;
+  rootPage:any;
 
   constructor(public platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen, public server:ServerProvider,public http:HttpClient,public storage:Storage,public alertCtrl:AlertController,public _OneSignal:OneSignal) {
     // console.log(angular.version);
     storage.get('user_data').then((val) => {
+      console.log(val);
       if (val == null) {
         this.rootPage = LoginPage;
-        console.log("get success");
-        console.log(val);
+        console.log("get success null");
+        // console.log(val);
       } else {
         this.rootPage = TabsPage;
-        console.log("get fail");
-        console.log(val);
+        console.log("get success not null");
+        // console.log(val);
 
       }
     });
@@ -82,7 +85,7 @@ export class MyApp {
     this._OneSignal.getIds()
       .then((ids) => {
         // this.deviceId = JSON.stringify(ids);
-        console.log('getIds: ' + JSON.stringify(ids));
+        // console.log('getIds: ' + JSON.stringify(ids));
       });
     this._OneSignal.handleNotificationReceived().subscribe(() => {
       // handle received here how you wish.

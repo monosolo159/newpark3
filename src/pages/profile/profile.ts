@@ -89,7 +89,7 @@ export class ProfilePage {
       this.user_phone = val['user_phone'];
       this.user_phone2 = val['user_phone2'];
       this.user_photo = this.linkPicProfile + val['user_photo'];
-      console.log(this.user_photo);
+      // console.log(this.user_photo);
       this.user_phone_open = val['user_phone_open'];
       // console.log(val['user_phone_open']);
       if (val['user_sex'] == 0) {

@@ -35,17 +35,17 @@ export class TabsPage {
 
   constructor(public modalCtrl: ModalController, public navParams: NavParams, public server: ServerProvider, public storage: Storage, public http: HttpClient, public alertCtrl: AlertController) {
     console.log("page tabs");
-    Observable.interval(2000).subscribe(res => {
+    Observable.interval(3000).subscribe(res => {
       this.storage.get('user_data').then((val) => {
         //ถ้ามีข้อมูลให้ไปที่หน้า tabs
         if (val != null) {
           this.user_id = val['user_id'];
           this.checkUserCar();
         }
-
       });
     });
   }
+
 
   public checkUserCar() {
     var send_data = { 'user_id': this.user_id };
@@ -60,15 +60,15 @@ export class TabsPage {
         //เช็คว่ามีข้อมูลหรือไม่
         if (this.data_table.length < 1) {
           this.tabsEnable = false;
-          this.selectIndexTabs = 4;
+          this.selectIndexTabs = 5;
         }
         else {
           this.tabsEnable = true;
           this.selectIndexTabs = 0;
         }
 
-        if (this.tabRef.getSelected().index != 4 && this.tabsEnable == false) {
-          this.tabRef.select(4);
+        if (this.tabRef.getSelected().index != 5 && this.tabsEnable == false) {
+          this.tabRef.select(5);
           let alert = this.alertCtrl.create({
             // title: 'แจ้งเตือน',
             subTitle: 'กรุณาเพิ่มข้อมูลรถของท่าน',

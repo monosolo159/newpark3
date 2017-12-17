@@ -32,7 +32,6 @@ export class LoginPage {
       if (val != null) {
         this.navCtrl.push(TabsPage, {});
       }
-
     });
   }
 
